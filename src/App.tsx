@@ -8,10 +8,11 @@ import { setItems } from "./redux/Items";
 const App: React.FC = () => {
   const dispatch = useAppDispatch();
 
+  // Fetching All the items from the api when App component is mounted
   useEffect(() => {
     const fetchData = async () => {
       const fetchedItems = await dispatch(fetchItems()).unwrap();
-      dispatch(setItems(fetchedItems));
+      dispatch(setItems(fetchedItems)); // Setting The items state in the "items" State Slice
     };
     fetchData();
   }, []);
