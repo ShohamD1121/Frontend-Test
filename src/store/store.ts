@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
-import itemsReducer from "../redux/Items";
+import DropBoxItemsReducer from "../redux/DropBoxItems";
+import BoxesItemsReducer from "../redux/BoxesItems";
 
 // Configure the Redux store
 const store = configureStore({
   reducer: {
-    items: itemsReducer,
+    dropBoxItems: DropBoxItemsReducer,
+    boxesItems: BoxesItemsReducer,
   },
   //middleware for the Redux store, disabling the serializable check for unnecessary warnings.
   middleware: (getDefaultMiddleware) =>

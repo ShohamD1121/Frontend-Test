@@ -1,0 +1,14 @@
+// Using grid for the container so when screen is smaller one box will take all the width of the container
+.boxes_container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 90%;
+  margin: 45px auto;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .boxes_container {
+    grid-template-columns: 1fr;
+  }
+}

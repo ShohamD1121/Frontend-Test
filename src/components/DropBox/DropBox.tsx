@@ -2,13 +2,16 @@ import React, { useState } from "react";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { useSelector } from "react-redux";
-import { RootState } from "../../store/store";
+import { RootState, useAppDispatch } from "../../store/store";
 import { Icons } from "../../constants/icons";
+import { removeItemFromDropBoxItems } from "../../redux/DropBoxItems";
+import { addItemToBoxesItems } from "../../redux/BoxesItems";
 import "./DropBox.scss";
 
 const DropBox: React.FC = () => {
   const [open, setOpen] = useState(false);
-  const items = useSelector((state: RootState) => state.items);
+  const items = useSelector((state: RootState) => state.dropBoxItems);
+  const dispatch = useAppDispatch();
 
   // Handling Opening and closing the DropBox
   const handleOpen = () => {
@@ -37,7 +40,10 @@ const DropBox: React.FC = () => {
             const Icon = Icons[index]; // Extracting the relevant icon according to the index of the array
             return (
               <li
-                onClick={() => {}} // Here relevant actions will be dispatched
+                onClick={() => {
+                  dispatch(removeItemFromDropBoxItems(item.id));
+                  dispatch(addItemToBoxesItems(item));
+                }} // Remove item from DropBox, and move it to Boxes
                 key={item.id}
               >
                 <div>
