@@ -6,6 +6,7 @@
   align-items: center;
 
   .dropbox-button {
+    cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -44,10 +45,13 @@
     list-style: none;
     width: 90%;
     box-shadow: 0 10px 10px -1px rgba(0, 0, 0, 0.09);
+    opacity: 0;
+    animation: fade-in 0.5s ease-in forwards;
   }
 
   li {
-    padding: 5px 0;
+    padding: 5px;
+    cursor: pointer;
 
     div {
       display: flex;
@@ -61,6 +65,10 @@
         margin: 0 1rem;
       }
     }
+    &:hover {
+      background-color: rgb(218, 228, 228); /* Change the color on hover */
+      transition: color 0.3s ease; /* Add a smooth transition animation */
+    }
   }
 }
 
@@ -72,4 +80,16 @@
 
 .top_border_radius {
   border-radius: 10px 10px 0 0;
+}
+
+/* Define the fade-in animation */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px); /* Move element up by 10px */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); /* Move element back to its original position */
+  }
 }

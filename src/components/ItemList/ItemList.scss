@@ -52,5 +52,10 @@
     border-radius: 10px;
     font-size: 1rem;
     margin-top: 30px;
+    cursor: pointer;
+    &:hover {
+      background-color: rgb(131, 146, 146);
+      transition: color 0.3s ease;
+    }
   }
 }

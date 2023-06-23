@@ -1,6 +1,8 @@
 .box-container {
   border-radius: 10px;
   box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.1), 0px 4px 6px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  animation: fade-in-opacity 0.5s ease-in forwards;
 
   // Header of the box
   .box-title {
@@ -37,6 +39,12 @@
       width: 50px;
       border: none;
       border-radius: 9px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: rgb(218, 228, 228);
+        transition: color 0.3s ease;
+      }
     }
   }
 
@@ -134,4 +142,14 @@
 
 .not-in-stock {
   opacity: 0.4;
+}
+
+/* Define the fade-in animation */
+@keyframes fade-in-opacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
