@@ -1,12 +1,17 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Item } from "../constants/types";
 
-const initialState: [] = [];
+const initialState: Item[] = [];
 
 const itemsSlice = createSlice({
   name: "items",
   initialState,
-  reducers: {},
+  reducers: {
+    setItems: (state, action: PayloadAction<Item[]>) => {
+      return action.payload;
+    },
+  },
 });
 
-export const {} = itemsSlice.actions;
+export const { setItems } = itemsSlice.actions;
 export default itemsSlice.reducer;
