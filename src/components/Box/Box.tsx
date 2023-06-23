@@ -8,7 +8,12 @@ import { addItemToDropBoxItems } from "../../redux/DropBoxItems";
 import {
   addItemToItemList,
   removeItemFromItemList,
+  updateQuantityOfItem,
 } from "../../redux/ItemList";
+import {
+  addToTotalPrice,
+  subtractFromTotalPrice,
+} from "../../redux/TotalPrice";
 import "./Box.scss";
 
 interface Props {
@@ -17,6 +22,7 @@ interface Props {
 
 const Box: React.FC<Props> = ({ item }) => {
   const [quantity, setQuantity] = useState(0);
+  const [totalPriceOfItem, setTotalPriceOfItem] = useState(0);
   const dispatch = useAppDispatch();
   const Icon = icons[item.name];
 
@@ -29,6 +35,16 @@ const Box: React.FC<Props> = ({ item }) => {
     // Handling Change in Quantity Progress Bar
     const newQuantity = parseInt(event.target.value);
     setQuantity(newQuantity);
+    dispatch(updateQuantityOfItem({ id: item.id, amount: newQuantity }));
+
+    const priceDifference = (newQuantity - quantity) * item.price; // variable to indicate wether price should be increased or decreased
+    if (priceDifference > 0) {
+      dispatch(addToTotalPrice(priceDifference)); // Add to the total price
+    } else if (priceDifference < 0) {
+      dispatch(subtractFromTotalPrice(-priceDifference)); // Subtract from the total price
+    }
+
+    setTotalPriceOfItem((prev) => prev + priceDifference);
   };
 
   return (
@@ -47,7 +63,8 @@ const Box: React.FC<Props> = ({ item }) => {
             dispatch(removeItemFromBoxesItems(item.id));
             dispatch(removeItemFromItemList(item.id));
             dispatch(addItemToDropBoxItems(item));
-          }} // Remove item from Boxes, ItemList, and move it back to DropBox
+            dispatch(subtractFromTotalPrice(totalPriceOfItem));
+          }} // Remove item from Boxes, ItemList, and move it back to DropBox, also remove it's price from the totalPrice of the item list
         >
           <AiOutlineCloseCircle size={25} />
         </button>

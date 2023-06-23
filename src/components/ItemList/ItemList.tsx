@@ -1,10 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
+import { sendItemList } from "../../api/SendItemList";
 import "./ItemList.scss";
 
 const ItemList: React.FC = () => {
-  const listItems = useSelector((state: RootState) => state.itemList);
+  const itemList = useSelector((state: RootState) => state.itemList);
+  const totalPrice = useSelector((state: RootState) => state.totalPrice);
 
   return (
     <div className="item-list-container">
@@ -12,8 +14,8 @@ const ItemList: React.FC = () => {
       <h2>Item list:</h2>
       <ul>
         {
-          // Mapping the selected ListItems in the item list section
-          listItems.map((item, index) => (
+          // Mapping the selected itemList in the item list section
+          itemList.map((item, index) => (
             // making sure the key is uniqe as possibole for this case
             <li key={index + Math.random() * 2.3}>
               <div className="item">
@@ -29,10 +31,10 @@ const ItemList: React.FC = () => {
         }
       </ul>
       <h2>Total Price:</h2>
-      <p>$12</p>
+      <p>${totalPrice}</p>
       <button
         onClick={() => {
-          // Here a submit function will be called
+          sendItemList(itemList);
         }}
       >
         SUBMIT

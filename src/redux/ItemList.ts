@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface ItemList {
+// reason for naming it amount ==> According to Api accepts { id : string , amount : number}
+export interface ItemList {
   id: string;
   amount: number;
 }
@@ -19,9 +20,21 @@ const itemListSlice = createSlice({
       const itemName = action.payload;
       return state.filter((item) => item.id !== itemName);
     },
+    // Update Quantity of a specific item of the list, so the Box's progressbar true quantity value will be multiplied by the price
+    updateQuantityOfItem: (state, action: PayloadAction<ItemList>) => {
+      const updatedItem = action.payload;
+      const itemToUpdate = state.find((item) => item.id === updatedItem.id);
+      if (itemToUpdate) {
+        itemToUpdate.amount = updatedItem.amount;
+      }
+      return state;
+    },
   },
 });
 
-export const { addItemToItemList, removeItemFromItemList } =
-  itemListSlice.actions;
+export const {
+  addItemToItemList,
+  removeItemFromItemList,
+  updateQuantityOfItem,
+} = itemListSlice.actions;
 export default itemListSlice.reducer;

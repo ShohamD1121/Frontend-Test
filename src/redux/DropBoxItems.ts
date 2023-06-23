@@ -7,7 +7,7 @@ const DropBoxItems = createSlice({
   name: "dropBoxItems",
   initialState,
   reducers: {
-    setItems: (state, action: PayloadAction<Item[]>) => {
+    setDropBoxItems: (state, action: PayloadAction<Item[]>) => {
       return action.payload;
     },
     removeItemFromDropBoxItems: (state, action: PayloadAction<string>) => {
@@ -21,6 +21,9 @@ const DropBoxItems = createSlice({
   },
 });
 
-export const { setItems, addItemToDropBoxItems, removeItemFromDropBoxItems } =
-  DropBoxItems.actions;
+export const {
+  setDropBoxItems,
+  addItemToDropBoxItems,
+  removeItemFromDropBoxItems,
+} = DropBoxItems.actions;
 export default DropBoxItems.reducer;

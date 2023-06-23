@@ -4,7 +4,7 @@ import ItemList from "./components/ItemList/ItemList";
 import { useAppDispatch } from "./store/store";
 import { useEffect } from "react";
 import { fetchItems } from "./api/FetchItems";
-import { setItems } from "./redux/DropBoxItems";
+import { setDropBoxItems } from "./redux/DropBoxItems";
 import "./App.scss";
 
 const App: React.FC = () => {
@@ -14,7 +14,7 @@ const App: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       const fetchedItems = await dispatch(fetchItems()).unwrap();
-      dispatch(setItems(fetchedItems)); // Setting The items state in the "items" State Slice
+      dispatch(setDropBoxItems(fetchedItems)); // Setting The items state in the "items" State Slice
     };
     fetchData();
   }, []);
