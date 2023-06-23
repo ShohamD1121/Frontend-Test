@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { useAppDispatch } from "../../store/store";
 import { Icons } from "../../constants/icons";
 import { Item } from "../../constants/types";
 import { removeItemFromBoxesItems } from "../../redux/BoxesItems";
 import { addItemToDropBoxItems } from "../../redux/DropBoxItems";
+import {
+  addItemToItemList,
+  removeItemFromItemList,
+} from "../../redux/ItemList";
 import "./Box.scss";
 
 interface Props {
@@ -16,6 +20,11 @@ const Box: React.FC<Props> = ({ item, index }) => {
   const [quantity, setQuantity] = useState(0);
   const dispatch = useAppDispatch();
   const Icon = Icons[index];
+
+  // Adding the item to the ItemList when Box is Mounted
+  useEffect(() => {
+    dispatch(addItemToItemList({ id: item.id, amount: quantity }));
+  }, []);
 
   const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     // Handling Change in Quantity Progress Bar
@@ -37,8 +46,9 @@ const Box: React.FC<Props> = ({ item, index }) => {
         <button
           onClick={() => {
             dispatch(removeItemFromBoxesItems(item.id));
+            dispatch(removeItemFromItemList(item.id));
             dispatch(addItemToDropBoxItems(item));
-          }} // Remove item from Boxes, and move it back to DropBox
+          }} // Remove item from Boxes, ItemList, and move it back to DropBox
         >
           <AiOutlineCloseCircle size={25} />
         </button>

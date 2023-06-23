@@ -1,10 +1,11 @@
 import DropBox from "./components/DropBox/DropBox";
-import "./App.scss";
+import Boxes from "./components/Boxes/Boxes";
+import ItemList from "./components/ItemList/ItemList";
 import { useAppDispatch } from "./store/store";
 import { useEffect } from "react";
 import { fetchItems } from "./api/FetchItems";
 import { setItems } from "./redux/DropBoxItems";
-import Boxes from "./components/Boxes/Boxes";
+import "./App.scss";
 
 const App: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -22,6 +23,7 @@ const App: React.FC = () => {
     <div className="app-container">
       <DropBox />
       <Boxes />
+      <ItemList />
     </div>
   );
 };
