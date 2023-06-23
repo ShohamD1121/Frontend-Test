@@ -1,0 +1,95 @@
+.dropbox-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .dropbox-button {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    border: 1px solid rgb(231, 231, 231);
+    color: cadetblue;
+    padding: 0.5rem 1rem;
+    height: 40px;
+    width: 90%;
+    box-shadow: 0 10px 10px -5px rgba(0, 0, 0, 0.09);
+    font-size: 24px;
+  }
+
+  /* Media query for smaller screens */
+
+  @media (max-width: 1280px) {
+    .dropbox-button {
+      font-size: 18px; /* Adjust font size for smaller screens */
+    }
+  }
+
+  @media (max-width: 400px) {
+    .dropbox-button {
+      font-size: 14px;
+    }
+  }
+
+  /* DropBox menu*/
+
+  ul {
+    background-color: rgb(238, 247, 247);
+    border-radius: 0 0 10px 10px;
+    padding-left: 0;
+    padding: 1rem;
+    margin: 0;
+    list-style: none;
+    width: 90%;
+    box-shadow: 0 10px 10px -1px rgba(0, 0, 0, 0.09);
+    opacity: 0;
+    animation: fade-in 0.5s ease-in forwards;
+  }
+
+  li {
+    padding: 5px;
+    cursor: pointer;
+
+    div {
+      display: flex;
+      align-items: center;
+      color: rgb(155, 154, 154);
+
+      hr {
+        flex-grow: 1;
+        border: none;
+        border-top: 3px dotted rgb(231, 231, 231);
+        margin: 0 1rem;
+      }
+    }
+    &:hover {
+      background-color: rgb(218, 228, 228); /* Change the color on hover */
+      transition: color 0.3s ease; /* Add a smooth transition animation */
+    }
+  }
+}
+
+/* Classes for border radius change handling */
+
+.full_border_radius {
+  border-radius: 10px;
+}
+
+.top_border_radius {
+  border-radius: 10px 10px 0 0;
+}
+
+/* Define the fade-in animation */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px); /* Move element up by 10px */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); /* Move element back to its original position */
+  }
+}

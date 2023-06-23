@@ -1,0 +1,155 @@
+.box-container {
+  border-radius: 10px;
+  box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.1), 0px 4px 6px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  animation: fade-in-opacity 0.5s ease-in forwards;
+
+  // Header of the box
+  .box-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    padding: 0 10px;
+
+    h1 {
+      display: flex;
+      align-items: center;
+      color: white;
+      font-weight: 300;
+      gap: 10px;
+      flex-grow: 1;
+      height: 30px;
+      padding: 10px;
+      border-radius: 9px;
+      font-size: 1.5rem;
+
+      span {
+        font-size: 1.2rem;
+      }
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgb(150, 150, 150);
+      background-color: rgb(245, 243, 243);
+      height: 50px;
+      width: 50px;
+      border: none;
+      border-radius: 9px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: rgb(218, 228, 228);
+        transition: color 0.3s ease;
+      }
+    }
+  }
+
+  // Box Select Section
+
+  .box-select {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 28px;
+    color: cadetblue;
+    height: 70px;
+
+    div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      font-size: 1.3rem;
+
+      h5 {
+        border: 1px solid rgb(231, 231, 231);
+        padding: 0px 18px;
+        border-radius: 3px;
+        font-weight: 400;
+      }
+
+      h6 {
+        font-weight: 400;
+      }
+    }
+
+    @media (max-width: 400px) {
+      div {
+        font-size: 13px;
+      }
+      p {
+        font-size: 13px;
+      }
+    }
+  }
+
+  /* Progress Bar */
+
+  .progress-bar {
+    display: flex;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 80%;
+    height: 5px;
+    border-radius: 5px;
+    background-color: rgb(231, 231, 231);
+    outline: none;
+    padding: 0;
+    margin: 0 auto;
+  }
+
+  .progress-bar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: white;
+    border: 1px solid cadetblue;
+    cursor: pointer;
+  }
+
+  .progress-bar::-moz-range-thumb {
+    width: 20px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: cadetblue;
+    cursor: pointer;
+  }
+
+  h2 {
+    display: flex;
+    align-items: center;
+    color: cadetblue;
+    font-size: 0.9rem;
+    font-weight: 400;
+    margin: 40px 30px 30px;
+    text-align: left;
+    gap: 6px;
+
+    span {
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+  }
+}
+
+/* Class for handling item that is not in stock */
+
+.not-in-stock {
+  opacity: 0.4;
+}
+
+/* Define the fade-in animation */
+@keyframes fade-in-opacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
