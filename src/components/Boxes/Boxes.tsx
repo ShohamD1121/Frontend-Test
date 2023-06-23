@@ -23,7 +23,7 @@ const Boxes: React.FC = () => {
     <div className="boxes_container">
       {boxesItems.map((item, index) => (
         // Mapping all of the Boxes in the grid container
-        <Box key={item.id} index={index} item={item} />
+        <Box key={item.id} item={item} />
       ))}
     </div>
   );

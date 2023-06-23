@@ -3,7 +3,7 @@ import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { useSelector } from "react-redux";
 import { RootState, useAppDispatch } from "../../store/store";
-import { Icons } from "../../constants/icons";
+import { icons } from "../../constants/icons";
 import { removeItemFromDropBoxItems } from "../../redux/DropBoxItems";
 import { addItemToBoxesItems } from "../../redux/BoxesItems";
 import "./DropBox.scss";
@@ -35,9 +35,9 @@ const DropBox: React.FC = () => {
       </div>
       {open ? (
         <ul>
-          {items.map((item, index) => {
+          {items.map((item) => {
             // Mapping all of the items one by one
-            const Icon = Icons[index]; // Extracting the relevant icon according to the index of the array
+            const Icon = icons[item.name]; // Extracting the relevant icon according to the index of the array
             return (
               <li
                 onClick={() => {

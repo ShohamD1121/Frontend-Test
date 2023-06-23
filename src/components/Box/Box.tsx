@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { useAppDispatch } from "../../store/store";
-import { Icons } from "../../constants/icons";
+import { icons } from "../../constants/icons";
 import { Item } from "../../constants/types";
 import { removeItemFromBoxesItems } from "../../redux/BoxesItems";
 import { addItemToDropBoxItems } from "../../redux/DropBoxItems";
@@ -13,13 +13,12 @@ import "./Box.scss";
 
 interface Props {
   item: Item;
-  index: number;
 }
 
-const Box: React.FC<Props> = ({ item, index }) => {
+const Box: React.FC<Props> = ({ item }) => {
   const [quantity, setQuantity] = useState(0);
   const dispatch = useAppDispatch();
-  const Icon = Icons[index];
+  const Icon = icons[item.name];
 
   // Adding the item to the ItemList when Box is Mounted
   useEffect(() => {
