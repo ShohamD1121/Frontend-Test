@@ -18,6 +18,7 @@
     width: 90%;
     box-shadow: 0 10px 10px -5px rgba(0, 0, 0, 0.09);
     font-size: 24px;
+    animation: fade-in 0.5s ease-in forwards;
   }
 
   /* Media query for smaller screens */
@@ -46,7 +47,7 @@
     width: 90%;
     box-shadow: 0 10px 10px -1px rgba(0, 0, 0, 0.09);
     opacity: 0;
-    animation: fade-in 0.5s ease-in forwards;
+    animation: fade-in 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
   }
 
   li {
@@ -86,10 +87,10 @@
 @keyframes fade-in {
   from {
     opacity: 0;
-    transform: translateY(-10px); /* Move element up by 10px */
+    transform: translateY(-30px);
   }
   to {
     opacity: 1;
-    transform: translateY(0); /* Move element back to its original position */
+    transform: translateY(0);
   }
 }
