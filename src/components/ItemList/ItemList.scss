@@ -4,6 +4,9 @@
   margin: 0 auto;
   width: 90%;
   color: cadetblue;
+  animation: scale-in 0.5s ease forwards;
+
+  /* Seprate between the boxes and itemlist sections*/
 
   .section-divider {
     height: 2px;
@@ -18,6 +21,8 @@
     margin: 2px 0;
   }
 
+  /* Represents the itemlist */
+
   ul {
     display: flex;
     flex-direction: column;
@@ -30,6 +35,9 @@
       margin: 3px auto;
       color: cadetblue;
     }
+
+    /* divdes the item name and it's KG count */
+
     .item-divider {
       flex-grow: 1;
       border: none;
@@ -37,6 +45,8 @@
       margin: 0 1rem;
     }
   }
+
+  /* Submit button */
 
   button {
     display: flex;
@@ -57,5 +67,15 @@
       background-color: rgb(131, 146, 146);
       transition: color 0.3s ease;
     }
+  }
+}
+
+/* Define the scale-in animation */
+@keyframes scale-in {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
   }
 }
